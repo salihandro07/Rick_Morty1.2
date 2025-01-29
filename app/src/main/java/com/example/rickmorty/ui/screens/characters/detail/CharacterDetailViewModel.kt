@@ -2,7 +2,7 @@ package com.example.rickmorty.ui.screens.characters.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rickmorty.data.dto.Character
+import com.example.rickmorty.data.remote.dto.Character
 import com.example.rickmorty.data.repository.CharactersRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +21,7 @@ class CharacterDetailViewModel(
         fetchCharacterById()
     }
 
-    private fun fetchCharacterById() {
+    fun fetchCharacterById() {
         viewModelScope.launch {
             val character = charactersRepository.fetchCharacterById(characterId)
             _characterState.value = character
