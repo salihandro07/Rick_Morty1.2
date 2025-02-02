@@ -2,7 +2,7 @@ package com.example.rickmorty.ui.screens.locations.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.rickmorty.data.dto.Location
+import com.example.rickmorty.data.remote.dto.Location
 import com.example.rickmorty.data.repository.LocationsRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +21,7 @@ class LocationsDetailViewModel(
         fetchLocationById()
     }
 
-    private fun fetchLocationById() {
+    fun fetchLocationById() {
         viewModelScope.launch {
             val location = locationsRepository.fetchLocationById(locationId)
             _locationState.value = location
